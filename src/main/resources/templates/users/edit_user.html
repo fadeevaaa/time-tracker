@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit</title>
+</head>
+<body>
+Заполните поле, которое хотите изменить:
+<form th:method="POST" th:action="@{/users/:id/edit}" th:object="${user}">
+  <label for="name">Имя: </label>
+  <input type="text" th:field="*{name}" id="name"/>
+  <label for="surname">Фамилия: </label>
+  <input type="text" th:field="*{surname}" id="surname"/>
+  <label for="password">Пароль: </label>
+  <input type="text" th:field="*{password}" id="password"/>
+  <br/>
+  <input type="submit" value="Сохранить изменения"/>
+</form>
+</body>
+</html>

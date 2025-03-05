@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+<body>
+Введите данные пользователя:
+<form th:method="POST" th:action="@{/users}" th:object="${user}">
+    <label for="name">Имя:</label>
+    <input type="text" th:field="*{name}" id="name"/>
+    <label for="surname">Фамилия:</label>
+    <input type="text" th:field="*{surname}" id="surname"/>
+    <label for="login">Логин:</label>
+    <input type="text" th:field="*{login}" id="login"/>
+    <label for="password">Пароль:</label>
+    <input type="text" th:field="*{password}" id="password"/>
+    <br/>
+    <br/>
+    <input type="submit" value="Зарегистрироваться"/>
+</form>
+</body>
+</html>
