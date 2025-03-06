@@ -1,7 +1,7 @@
-package com.fadeevaaa.time_tracker.service;
+package com.fadeevaaa.time_tracker.services;
 
-import com.fadeevaaa.time_tracker.models.User;
-import com.fadeevaaa.time_tracker.repository.UserRepository;
+import com.fadeevaaa.time_tracker.models.entities.User;
+import com.fadeevaaa.time_tracker.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +11,7 @@ import java.util.Optional;
 @Service
 public class UserService {
 
-    public User currentUser;
+    private User currentUser;
 
     private final UserRepository userRepository;
 
@@ -35,17 +35,17 @@ public class UserService {
         }
     }
 
-    public String login(String login, String password) {
+    public User login(String login, String password) {
         Optional<User> optionalUser = userRepository.findByLogin(login);
         try {
             currentUser = optionalUser.get().getPassword().equals(password) ? optionalUser.get() : null;
             if (currentUser == null) {
                 throw new NoSuchElementException();
             }
-            return "";
         } catch (NoSuchElementException e) {
-            return "Неверное имя пользователя или пароль";
+            e.printStackTrace();
         }
+        return currentUser;
     }
 
     public void editUser(User updatedUser) {
@@ -58,5 +58,9 @@ public class UserService {
     public void deleteUser() {
         userRepository.delete(currentUser);
         currentUser = null;
+    }
+
+    public User getCurrentUser() {
+        return currentUser;
     }
 }

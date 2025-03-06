@@ -1,7 +1,9 @@
-package com.fadeevaaa.time_tracker.models;
+package com.fadeevaaa.time_tracker.models.entities;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -20,6 +22,8 @@ public class User {
     private String login;
     @Column(name = "password", nullable = false)
     private String password;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Task> taskList = new ArrayList<>();
 
     public User(String name, String surname, String login, String password) {
         this.name = name;
@@ -101,5 +105,18 @@ public class User {
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 '}';
+    }
+
+    public List<Task> getTaskList() {
+        return taskList;
+    }
+
+    public void setTaskList(List<Task> taskList) {
+        this.taskList = taskList;
+    }
+
+    public void addTusk(Task task) {
+        taskList.add(task);
+        task.setUser(this);
     }
 }

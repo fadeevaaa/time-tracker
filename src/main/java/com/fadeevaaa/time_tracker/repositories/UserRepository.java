@@ -1,6 +1,6 @@
-package com.fadeevaaa.time_tracker.repository;
+package com.fadeevaaa.time_tracker.repositories;
 
-import com.fadeevaaa.time_tracker.models.User;
+import com.fadeevaaa.time_tracker.models.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

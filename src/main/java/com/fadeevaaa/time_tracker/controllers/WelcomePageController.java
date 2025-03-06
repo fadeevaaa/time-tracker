@@ -1,4 +1,4 @@
-package com.fadeevaaa.time_tracker.controller;
+package com.fadeevaaa.time_tracker.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
