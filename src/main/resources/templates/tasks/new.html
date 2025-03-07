@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Creating Task</title>
+</head>
+<body>
+<form th:method="POST" th:action="@{/tasks}" th:object="${task}">
+    <p><label for="title">Название задачи:</label>
+    <input type="text" th:field="*{title}" id="title"/></p>
+    <p><label for="description">Описание задачи:</label>
+    <input type="text" th:field="*{description}" id="description"/></p>
+    <!-- Выпадающий список -->
+    <p><label for="taskType">Уровень сложности:</label>
+    <select id="taskType" name="taskType" th:field="*{taskType}">
+        <option value="" selected="selected">Выберите уровень сложности задачи</option>
+        <option th:each="type : ${T(com.fadeevaaa.time_tracker.models.enums.TaskType).values()}" th:value="${type.toString()}"
+                th:text="${type.getRUS_TYPE()}"></option>
+    </select></p>
+    <br/>
+    <input type="submit" value="Сохранить"/>
+</form>
+</body>
+</html>

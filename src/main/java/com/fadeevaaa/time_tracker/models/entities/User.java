@@ -22,7 +22,7 @@ public class User {
     private String login;
     @Column(name = "password", nullable = false)
     private String password;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.LAZY)
     private List<Task> taskList = new ArrayList<>();
 
     public User(String name, String surname, String login, String password) {

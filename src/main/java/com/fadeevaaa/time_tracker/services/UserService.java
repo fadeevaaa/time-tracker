@@ -1,6 +1,8 @@
 package com.fadeevaaa.time_tracker.services;
 
+import com.fadeevaaa.time_tracker.models.entities.Task;
 import com.fadeevaaa.time_tracker.models.entities.User;
+import com.fadeevaaa.time_tracker.repositories.TaskRepository;
 import com.fadeevaaa.time_tracker.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,13 +13,15 @@ import java.util.Optional;
 @Service
 public class UserService {
 
+    private final TaskRepository taskRepository;
     private User currentUser;
 
     private final UserRepository userRepository;
 
     @Autowired
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, TaskRepository taskRepository) {
         this.userRepository = userRepository;
+        this.taskRepository = taskRepository;
     }
 
     public User getUser(Long id) {

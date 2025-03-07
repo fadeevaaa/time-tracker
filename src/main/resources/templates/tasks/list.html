@@ -5,12 +5,14 @@
     <title>Task list</title>
 </head>
 <body>
-Список задач:
-<!--<ul>-->
-<!--    <li th:each="task : ${tasks}">-->
-<!--        <a th:href="@{'/view-user?id=' + ${user.id}}" th:text="'Просмотреть данные пользователя ' + ${user.id}"></a>-->
-<!--    </li>-->
-<!--</ul>-->
+<p><a href="/tasks/new">Создать новую задачу</a></p>
 <p><a href="/users/user_menu">Вернуться в меню</a></p>
+<p>Выбрать задачу:</p>
+<ul>
+    <li th:each="task : ${tasks}">
+        <a th:href="@{'/tasks/' + ${task.id}}" th:text="${task.title}"></a>
+<!--        <a th:href="@{'/edit/product/' + ${product.id}}">Редактировать продукт</a>-->
+    </li>
+</ul>
 </body>
 </html>
