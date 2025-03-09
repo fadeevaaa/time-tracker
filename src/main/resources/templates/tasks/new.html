@@ -14,7 +14,7 @@
     <p><label for="taskType">Уровень сложности:</label>
     <select id="taskType" name="taskType" th:field="*{taskType}">
         <option value="" selected="selected">Выберите уровень сложности задачи</option>
-        <option th:each="type : ${T(com.fadeevaaa.time_tracker.models.enums.TaskType).values()}" th:value="${type.toString()}"
+        <option th:each="type : ${T(com.fadeevaaa.time_tracker.task_module.models.enums.TaskType).values()}" th:value="${type.toString()}"
                 th:text="${type.getRUS_TYPE()}"></option>
     </select></p>
     <br/>
