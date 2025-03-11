@@ -22,7 +22,7 @@ public abstract class Task {
     @Column(name = "task_status")
     @Enumerated(EnumType.STRING)
     private TaskStatus taskStatus;
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 

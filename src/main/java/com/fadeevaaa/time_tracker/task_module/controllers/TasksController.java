@@ -38,14 +38,6 @@ public class TasksController {
         return "tasks/new";
     }
 
-//    @PostMapping()
-//    public String createNewTask(@ModelAttribute("task") EasyTask task, Model model) {
-//        taskService.saveTask(task, currentUserId);
-//        List<Task> tasks = taskService.getTasks(currentUserId);
-//        model.addAttribute("tasks", tasks);
-//        return "tasks/list";
-//    }
-
     @GetMapping("/{id}")
     public String chooseTask(@PathVariable("id") Long id, Model model) {
         Task task = taskService.getTaskById(id);

@@ -23,11 +23,6 @@ public class UserService {
         this.taskRepository = taskRepository;
     }
 
-//    public User getUser(Long id) {
-//        Optional<User> optionalUser = userRepository.findById(id);
-//        return optionalUser.isPresent() ? optionalUser.get() : null;
-//    }
-
     public String saveUser(User user) {
         if (userRepository.existsByLogin(user.getLogin())) {
             return "Пользователь с таким логином уже существует";
@@ -65,5 +60,9 @@ public class UserService {
 
     public User getCurrentUser() {
         return currentUser;
+    }
+
+    public void setCurrentUser(User currentUser) {
+        this.currentUser = currentUser;
     }
 }
